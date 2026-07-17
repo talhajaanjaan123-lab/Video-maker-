@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="aspect_ratios">
+        <item>1:1 (Square)</item>
+        <item>16:9 (Landscape)</item>
+        <item>9:16 (Portrait)</item>
+        <item>4:3 (Standard)</item>
+        <item>3:4 (Vertical)</item>
+    </string-array>
+
+    <string-array name="video_durations">
+        <item>5 Seconds</item>
+        <item>10 Seconds</item>
+        <item>15 Seconds</item>
+    </string-array>
+</resources>

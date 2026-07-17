@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1C1B1F">
+
+    <!-- Scrollable content area constrained for tablets -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxWidth="600dp"
+                android:orientation="vertical">
+
+                <!-- Header Bar with Back Button -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnBack"
+                        style="@style/Widget.Material3.Button.IconButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:icon="?attr/actionModeCloseDrawable"
+                        app:iconSize="24dp"
+                        app:iconTint="#FFFFFF"
+                        android:contentDescription="Navigate Back" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Text to Image"
+                        android:textColor="#E6E1E5"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Input Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#2B2930"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#1AFFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Create Image Prompt"
+                            android:textColor="#EADDFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:textAllCaps="true"
+                            android:letterSpacing="0.05" />
+
+                        <!-- Prompt Input -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                            app:boxBackgroundColor="#1C1B1F"
+                            app:boxStrokeColor="#D0BCFF"
+                            app:hintTextColor="#D0BCFF"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxStrokeWidth="1dp"
+                            android:layout_marginBottom="16dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etPrompt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="A futuristic floating city at sunset, 8k, detailed"
+                                android:textColor="#E6E1E5"
+                                android:textColorHint="#938F99"
+                                android:textSize="15sp"
+                                android:inputType="textMultiLine"
+                                android:minLines="2"
+                                android:maxLines="5"
+                                android:gravity="top" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aspect Ratio"
+                            android:textColor="#EADDFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:textAllCaps="true"
+                            android:letterSpacing="0.05" />
+
+                        <!-- Aspect Ratio Selector (Spinner) -->
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_gradient"
+                            android:backgroundTint="#1C1B1F"
+                            android:padding="4dp"
+                            android:layout_marginBottom="24dp">
+
+                            <Spinner
+                                android:id="@+id/spinnerAspectRatio"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:textColor="#E6E1E5"
+                                android:entries="@array/aspect_ratios" />
+                        </FrameLayout>
+
+                        <!-- Generate Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGenerate"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:text="Generate Image"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:cornerRadius="16dp"
+                            android:textColor="#381E72"
+                            app:backgroundTint="#D0BCFF"
+                            app:icon="@android:drawable/ic_menu_compass"
+                            app:iconSize="20dp"
+                            app:iconTint="#381E72" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Output Display Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#2B2930"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#1AFFFFFF">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="280dp"
+                        android:padding="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <!-- Placeholder View -->
+                            <LinearLayout
+                                android:id="@+id/layoutPlaceholder"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="20dp">
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:src="@android:drawable/ic_menu_gallery"
+                                    app:tint="#4A4458"
+                                    android:layout_marginBottom="12dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Your creation will appear here"
+                                    android:textColor="#938F99"
+                                    android:textSize="15sp"
+                                    android:textStyle="italic" />
+                            </LinearLayout>
+
+                            <!-- Loading View -->
+                            <LinearLayout
+                                android:id="@+id/layoutLoading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:visibility="gone"
+                                android:padding="20dp">
+
+                                <com.google.android.material.progressindicator.CircularProgressIndicator
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:indeterminate="true"
+                                    app:indicatorColor="#D0BCFF"
+                                    app:trackColor="#4A4458"
+                                    android:layout_marginBottom="16dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Imagining your creation..."
+                                    android:textColor="#E6E1E5"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <!-- Error View -->
+                            <LinearLayout
+                                android:id="@+id/layoutError"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:visibility="gone"
+                                android:padding="20dp">
+
+                                <ImageView
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:src="@android:drawable/stat_notify_error"
+                                    app:tint="#EFB8C8"
+                                    android:layout_marginBottom="12dp" />
+
+                                <TextView
+                                    android:id="@+id/tvError"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Something went wrong. Please try again."
+                                    android:textColor="#EFB8C8"
+                                    android:textSize="15sp"
+                                    android:textAlignment="center" />
+                            </LinearLayout>
+
+                            <!-- Generated Output Image -->
+                            <ImageView
+                                android:id="@+id/ivOutput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:minHeight="240dp"
+                                android:scaleType="fitCenter"
+                                android:visibility="gone"
+                                android:contentDescription="Generated AI Image" />
+
+                        </RelativeLayout>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

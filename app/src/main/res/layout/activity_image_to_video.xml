@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1C1B1F">
+
+    <!-- Scrollable content area constrained for tablets -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxWidth="600dp"
+                android:orientation="vertical">
+
+                <!-- Header Bar with Back Button -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnBack"
+                        style="@style/Widget.Material3.Button.IconButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:icon="?attr/actionModeCloseDrawable"
+                        app:iconSize="24dp"
+                        app:iconTint="#FFFFFF"
+                        android:contentDescription="Navigate Back" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Image to Video"
+                        android:textColor="#E6E1E5"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Input Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#2B2930"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#1AFFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1. Select Source Image"
+                            android:textColor="#EADDFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="12dp"
+                            android:textAllCaps="true"
+                            android:letterSpacing="0.05" />
+
+                        <!-- Interactive Gallery Image Picker Button Area -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/layoutSelectImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="16dp"
+                            app:cardBackgroundColor="#1C1B1F"
+                            app:strokeWidth="1dp"
+                            app:strokeColor="#332F3D"
+                            android:layout_marginBottom="12dp">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <!-- Picker placeholder if empty -->
+                                <LinearLayout
+                                    android:id="@+id/layoutPickPlaceholder"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="12dp">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:src="@android:drawable/ic_menu_add"
+                                        app:tint="#D0BCFF"
+                                        android:layout_marginBottom="6dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Tap to select from Gallery"
+                                        android:textColor="#D0BCFF"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <!-- Selected Preview Image -->
+                                <ImageView
+                                    android:id="@+id/ivSelectedPreview"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:visibility="gone"
+                                    android:contentDescription="Source image preview" />
+                            </FrameLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Chip presets label -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="OR SELECT A PRESET DESIGN TEMPLATE"
+                            android:textColor="#938F99"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:letterSpacing="0.05" />
+
+                        <!-- Preset sample selectors chips layout -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="20dp"
+                            android:gravity="center">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnSample1"
+                                style="@style/Widget.Material3.Button.TonalButton"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="6dp"
+                                android:text="Space"
+                                android:textSize="12sp"
+                                app:cornerRadius="12dp"
+                                android:textColor="#D0BCFF"
+                                app:backgroundTint="#25232A" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnSample2"
+                                style="@style/Widget.Material3.Button.TonalButton"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="6dp"
+                                android:text="Nature"
+                                android:textSize="12sp"
+                                app:cornerRadius="12dp"
+                                android:textColor="#D0BCFF"
+                                app:backgroundTint="#25232A" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnSample3"
+                                style="@style/Widget.Material3.Button.TonalButton"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:text="Cyber"
+                                android:textSize="12sp"
+                                app:cornerRadius="12dp"
+                                android:textColor="#D0BCFF"
+                                app:backgroundTint="#25232A" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2. Enter Motion Prompt"
+                            android:textColor="#EADDFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:textAllCaps="true"
+                            android:letterSpacing="0.05" />
+
+                        <!-- Prompt Input -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                            app:boxBackgroundColor="#1C1B1F"
+                            app:boxStrokeColor="#EADDFF"
+                            app:hintTextColor="#EADDFF"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxStrokeWidth="1dp"
+                            android:layout_marginBottom="20dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etPrompt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Slowly pan right, animate clouds swirling, epic depth"
+                                android:textColor="#E6E1E5"
+                                android:textColorHint="#938F99"
+                                android:textSize="15sp"
+                                android:inputType="textMultiLine"
+                                android:minLines="2"
+                                android:maxLines="4"
+                                android:gravity="top" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Generate Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGenerate"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:text="Animate Video"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:cornerRadius="16dp"
+                            android:textColor="#21005D"
+                            app:backgroundTint="#EADDFF"
+                            app:icon="@android:drawable/ic_menu_crop"
+                            app:iconSize="20dp"
+                            app:iconTint="#21005D" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Output Display Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#2B2930"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#1AFFFFFF">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="280dp"
+                        android:padding="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <!-- Placeholder View -->
+                            <LinearLayout
+                                android:id="@+id/layoutPlaceholder"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="20dp">
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:src="@android:drawable/ic_menu_crop"
+                                    app:tint="#4A4458"
+                                    android:layout_marginBottom="12dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Your cinematic animation will render here"
+                                    android:textColor="#938F99"
+                                    android:textSize="15sp"
+                                    android:textStyle="italic"
+                                    android:textAlignment="center" />
+                            </LinearLayout>
+
+                            <!-- Loading View -->
+                            <LinearLayout
+                                android:id="@+id/layoutLoading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:visibility="gone"
+                                android:padding="20dp">
+
+                                <com.google.android.material.progressindicator.CircularProgressIndicator
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:indeterminate="true"
+                                    app:indicatorColor="#EADDFF"
+                                    app:trackColor="#4A4458"
+                                    android:layout_marginBottom="16dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Annihilating space &amp; rendering keyframes..."
+                                    android:textColor="#E6E1E5"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <!-- Error View -->
+                            <LinearLayout
+                                android:id="@+id/layoutError"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:visibility="gone"
+                                android:padding="20dp">
+
+                                <ImageView
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:src="@android:drawable/stat_notify_error"
+                                    app:tint="#EFB8C8"
+                                    android:layout_marginBottom="12dp" />
+
+                                <TextView
+                                    android:id="@+id/tvError"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Something went wrong. Please try again."
+                                    android:textColor="#EFB8C8"
+                                    android:textSize="15sp"
+                                    android:textAlignment="center" />
+                            </LinearLayout>
+
+                            <!-- Generated Output Video -->
+                            <VideoView
+                                android:id="@+id/vvOutput"
+                                android:layout_width="match_parent"
+                                android:layout_height="240dp"
+                                android:layout_gravity="center"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,8 @@
+{
+  "name": "Remix AI Gen Studio",
+  "description": "Generate high-quality images and cinematic videos using Imagen 3 and Veo 2 models.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
